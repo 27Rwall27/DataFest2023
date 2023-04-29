@@ -38,7 +38,7 @@ final_data$Imprisoned <- ifelse(final_data$Imprisoned == "NULL", NA, final_data$
 
 final_data$Veteran <- ifelse(final_data$Veteran == "NULL", NA, final_data$Veteran)
 
-## Best logistic regression model so far
+## Best logistic regression model so far (accuracy: 0.7489328)
 
 set.seed(1)
 
