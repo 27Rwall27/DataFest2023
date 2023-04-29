@@ -21,3 +21,7 @@ cases_not_taken$Circuit <- ifelse(cases_not_taken$StateAbbr %in% c("ME", "MA", "
 ## Code for cleaning the gender column
 
 final_data$Gender <- ifelse(final_data$Gender %in% c("Female,Male", "Female,Male,Non-Conforming,Other", "Female,Non-Conforming", "Female,Other", "Male,Non-Conforming", "Male,Other", "Non-Conforming", "Non-Conforming,Other", "Other"), "Other", ifelse(final_data$Gender == "I'd rather not answer", NA, ifelse(final_data$Gender == "NULL", NA, final_data$Gender)))
+
+## Code for cleaning the age column
+
+final_data$Age <- ifelse(final_data$Age <= 25, "25_or_under", ifelse((final_data$Age > 25) & (final_data$Age < 50), "25_to_50", ifelse((final_data$Age > 50) & (final_data$Age < 65), "50-65", ifelse(final_data$Age >= 65, "65+", NA))))
