@@ -55,3 +55,15 @@ predictions <- predict(model, newdata = test, type = "response")
 predictions <- ifelse(predictions > 0.5, "TRUE", "FALSE")
 
 mean(predictions == test$is_answered, na.rm = TRUE)
+
+
+## Code for adding the poverty variable 
+
+final_data <- read.csv("final_data.csv")
+final_data$AnnualIncome <- as.numeric(final_data$AnnualIncome)
+final_data[is.na(final_data$AnnualIncome), ] <- 0
+poverty <- rep(FALSE, nrow(final_data))
+final_data_pov <- cbind(final_data, poverty)
+final_data_pov[final_data_pov$AnnualIncome < 14891, ]$poverty <- TRUE
+write.csv(final_data_pov, "final_data_pov.csv")
+
