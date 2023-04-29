@@ -58,3 +58,30 @@ final_data_pov <- cbind(final_data, poverty)
 final_data_pov[final_data_pov$AnnualIncome < 14891, ]$poverty <- TRUE
 write.csv(final_data_pov, "final_data_pov.csv")
 
+
+## Code for defining vars as cat or num vars
+
+x <- read_csv("model_input.csv")
+model_input <- data.frame("state"                  = factor(x$StateAbbr),
+                          "county"                 = factor(x$County),
+                          "question_cat"           = factor(x$Category),
+                          "is_answered"            = factor(as.numeric(x$is_answered)),
+                          "state_workload_overall" = x$state_lawyer_workload,
+                          "client_ethnicity"       = factor(x$EthnicIdentity),
+                          "client_age"             = factor(x$Age),
+                          "client_gender"          = factor(x$Gender), # Note: Female as baseline
+                          "is_married"             = factor(x$MaritalStatus),
+                          "is_veteran"             = factor(x$Veteran),
+                          "is_during_covid"        = factor(as.numeric(x$during_covid)),
+                          "client_household_size"  = as.numeric(x$NumberInHousehold),
+                          "client_income"          = as.numeric(x$AnnualIncome),
+                          "circuit"                = factor(as.numeric(x$Circuit)),
+                          "asked_year"             = factor(x$asked_year),
+                          "asked_month"            = factor(x$asked_month),
+                          "question_nchar"         = as.numeric(x$text_nchar),
+                          "is_urgent"              = factor(as.numeric(x$is_urgent)),
+                          "is_poor"                = factor(is.numeric(x$is_poor)),
+                          "has_balance_info"       = factor(is.numeric(x$has_balance_info)))
+
+
+
