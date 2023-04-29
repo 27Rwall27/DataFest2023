@@ -29,3 +29,11 @@ final_data$Age <- ifelse(final_data$Age <= 25, "25_or_under", ifelse((final_data
 ## Cleaning the marital status column
 
 final_data$MaritalStatus <- ifelse(final_data$MaritalStatus == "NULL", "I'd rather not answer", final_data$MaritalStatus)
+
+## Cleaning the imprisoned column
+
+final_data$Imprisoned <- ifelse(final_data$Imprisoned == "NULL", NA, final_data$Imprisoned)
+
+## Cleaning the veteran column
+
+final_data$Veteran <- ifelse(final_data$Veteran == "NULL", NA, final_data$Veteran)
