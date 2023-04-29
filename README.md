@@ -48,7 +48,7 @@ train <- final_data[sample, ]
 
 test <- final_data[!sample, ]
 
-model <- glm(formula = is_answered ~ text_nchar + during_covid + state_lawyer_workload + MaritalStatus + Age + Circuit + Category, family = binomial, data = na.omit(train))
+model <- glm(formula = is_answered ~ text_nchar + during_covid + state_lawyer_workload + MaritalStatus + Age + Circuit + Category, family = binomial, data = train)
 
 predictions <- predict(model, newdata = test, type = "response")
 
