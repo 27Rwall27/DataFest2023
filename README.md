@@ -1,16 +1,7 @@
 # DataFest2023
 
-
 ## Definition of cases_not_taken
 - R code: x <- questions[(questions$TakenOnUtc == "NULL" & questions$TakenByAttorneyUno == "NULL"), ]
-
-## Definition of X1_not_text
-- Result of merging questions.csv and questionposts.csv files by unique QuetionsUno's in questionposts.csv
-- R code: x <- inner_join(questions, posts, by = "QuestionUno", multiple = "first")
-
-## Definition of X2_final_data
-- Results of merging X1_not_text.csv with clients.csv and states.csv data
-- Does not include text of questions (too large)
 
 ## Code for creating circuits
 
