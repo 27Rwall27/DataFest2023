@@ -80,8 +80,8 @@ x <- data.frame("state"                  = factor(x$state),
                 "asked_month"            = factor(x$asked_month),
                 "question_nchar"         = as.numeric(x$question_nchar),
                 "is_urgent"              = factor(as.numeric(x$is_urgent)),
-                "is_poor"                = factor(is.numeric(x$is_poor)),
-                "has_balance_info"       = factor(is.numeric(x$has_balance_info)))
+                "is_poor"                = factor(as.numeric(x$is_poor)),
+                "has_balance_info"       = factor(as.numeric(x$has_balance_info)))
 
 
 
