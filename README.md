@@ -25,3 +25,7 @@ final_data$Gender <- ifelse(final_data$Gender %in% c("Female,Male", "Female,Male
 ## Code for cleaning the age column
 
 final_data$Age <- ifelse(final_data$Age <= 25, "25_or_under", ifelse((final_data$Age > 25) & (final_data$Age < 50), "25_to_50", ifelse((final_data$Age > 50) & (final_data$Age < 65), "50-65", ifelse(final_data$Age >= 65, "65+", NA))))
+
+## Cleaning the marital status column
+
+final_data$MaritalStatus <- ifelse(final_data$MaritalStatus == "NULL", "I'd rather not answer", final_data$MaritalStatus)
