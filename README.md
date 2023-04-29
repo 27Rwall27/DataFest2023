@@ -20,4 +20,4 @@ cases_not_taken$Circuit <- ifelse(cases_not_taken$StateAbbr %in% c("ME", "MA", "
 
 ## Code for cleaning the gender column
 
-final_data$Gender <- ifelse(final_data$Gender %in% c("Female,Male", "Female,Male,Non-Conforming,Other", "Female,Non-Conforming", "Female,Other", "I'd rather not answer", "Male,Non-Conforming", "Male,Other", "Non-Conforming", "Non-Conforming,Other", "Other"), "Other", final_data$Gender)
+final_data$Gender <- ifelse(final_data$Gender %in% c("Female,Male", "Female,Male,Non-Conforming,Other", "Female,Non-Conforming", "Female,Other", "Male,Non-Conforming", "Male,Other", "Non-Conforming", "Non-Conforming,Other", "Other"), "Other", ifelse(final_data$Gender == "I'd rather not answer", "NULL", final_data$Gender))
