@@ -41,11 +41,17 @@ final_data$Veteran <- ifelse(final_data$Veteran == "NULL", NA, final_data$Vetera
 ## Best logistic regression model so far
 
 set.seed(1)
+
 sample <- sample(c(TRUE, FALSE), nrow(final_data), replace = TRUE, prob = c(1 - 0.33, 0.33))
+
 train <- final_data[sample, ]
+
 test <- final_data[!sample, ]
 
 model <- glm(formula = is_answered ~ text_nchar + during_covid + state_lawyer_workload + MaritalStatus + Age + Circuit + Category, family = binomial, data = na.omit(train))
+
 predictions <- predict(model, newdata = test, type = "response")
+
 predictions <- ifelse(predictions > 0.5, "TRUE", "FALSE")
+
 mean(predictions == test$is_answered, na.rm = TRUE)
