@@ -41,28 +41,40 @@ write.csv(final_data_pov, "final_data_pov.csv")
 
 
 ## Code for defining vars as cat or num vars
-x <- read_csv("model_input.csv", show_col_types = FALSE)
+  x <- read_csv("model_input.csv", show_col_types = FALSE)
 
-x <- data.frame("state"                  = factor(x$state),
-                "county"                 = factor(x$county),
-                "question_cat"           = factor(x$question_cat),
-                "is_answered"            = factor(as.numeric(x$is_answered)),
-                "state_workload_overall" = as.numeric(x$state_workload_overall),
-                "client_ethnicity"       = factor(x$client_ethnicity),
-                "client_age"             = factor(x$client_age),
-                "client_gender"          = factor(x$client_gender), # Note: Female as baseline
-                "is_married"             = factor(x$is_married),
-                "is_veteran"             = factor(x$is_veteran),
-                "is_during_covid"        = factor(as.numeric(x$is_during_covid)),
-                "client_household_size"  = as.numeric(x$client_household_size),
-                "client_income"          = as.numeric(x$client_income),
-                "circuit"                = factor(as.numeric(x$circuit)),
-                "asked_year"             = factor(x$asked_year),
-                "asked_month"            = factor(x$asked_month),
-                "question_nchar"         = as.numeric(x$question_nchar),
-                "is_urgent"              = factor(as.numeric(x$is_urgent)),
-                "is_poor"                = factor(as.numeric(x$is_poor)),
-                "has_balance_info"       = factor(as.numeric(x$has_balance_info)))
+  model_input <- data.frame("state"                      = factor(x$StateAbbr),
+                            "county"                     = factor(x$County),
+                            "question_cat"               = factor(x$Category),
+                            "is_answered"                = factor(as.numeric(x$is_answered)),
+                            "state_workload_overall"     = x$state_lawyer_workload,
+                            "client_ethnicity"           = factor(x$EthnicIdentity),
+                            "client_age"                 = factor(x$Age),
+                            "client_gender"              = factor(x$Gender), # Note: Female as baseline
+                            "is_married"                 = factor(x$MaritalStatus),
+                            "is_veteran"                 = factor(x$Veteran),
+                            "is_during_covid"            = factor(as.numeric(x$during_covid)),
+                            "client_household_size"      = as.numeric(x$NumberInHousehold),
+                            "client_income"              = as.numeric(x$AnnualIncome),
+                            "circuit"                    = factor(as.numeric(x$Circuit)),
+                            "asked_year"                 = factor(x$asked_year),
+                            "asked_month"                = factor(x$asked_month),
+                            "question_nchar"             = as.numeric(x$text_nchar),
+                            "is_urgent"                  = factor(as.numeric(x$is_urgent)),
+                            "is_poor"                    = factor(as.numeric(x$is_poor)),
+                            "has_balance_info"           = factor(as.numeric(x$has_balance_info)),
+                            "county_n_cases_overall"     = as.numeric(x$county_n_cases_overall),
+                            "county_n_attorneys_overall" = as.numeric(x$county_n_attorneys_overall),
+                            "county_workload_overall"    = as.numeric(x$county_workload_overall),
+                            "county_n_cases_yr"          = as.numeric(x$county_n_cases_yr),
+                            "county_n_attorneys_yr"      = as.numeric(x$county_n_attorneys_yr),
+                            "county_workload_yr"         = as.numeric(x$county_workload_yr),
+                            "county_cat_n_cases_yr"      = as.numeric(x$county_cat_n_cases_yr),
+                            "county_cat_n_attorneys_yr"  = as.numeric(x$county_cat_n_attorneys_y),
+                            "county_cat_workload_yr"     = as.numeric(x$county_cat_workload_yr),
+                            "county_cat_n_cases_m"       = as.numeric(x$county_cat_n_cases_m),
+                            "county_cat_n_attorneys_m"   = as.numeric(x$county_cat_n_attorneys_m),
+                            "county_cat_workload_m"      = as.numeric(x$county_cat_workload_m))
 
 
 
